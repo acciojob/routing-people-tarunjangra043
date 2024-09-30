@@ -14,7 +14,7 @@ const UserList = () => {
 
   return (
     <div>
-      <h1>User Details</h1>
+      <h1>User List</h1>
       <ul>
         {users.map((user) => {
           return (
