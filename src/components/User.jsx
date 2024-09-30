@@ -18,6 +18,7 @@ const User = () => {
 
   useEffect(() => {
     const fetchUser = () => {
+      setLoading(true);
       setTimeout(() => {
         const foundUser = data.find((data) => data.id === Number(id));
         setUser(foundUser);
