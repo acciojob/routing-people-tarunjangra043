@@ -7,13 +7,13 @@ const User = () => {
   const [loading, setLoading] = useState(true);
 
   const data = [
-    { id: 1, username: "Tarun Jangra" },
-    { id: 2, username: "Sumit Jangra" },
-    { id: 3, username: "Tannu Jangra" },
-    { id: 4, username: "Ritik Jangra" },
-    { id: 5, username: "Jonika Jangra" },
-    { id: 6, username: "Deepak Jangra" },
-    { id: 7, username: "Pankaj Jangra" },
+    { id: 1, name: "Tarun Jangra" },
+    { id: 2, name: "Sumit Jangra" },
+    { id: 3, name: "Leanne Graham" },
+    { id: 4, name: "Ritik Jangra" },
+    { id: 5, name: "Jonika Jangra" },
+    { id: 6, name: "Deepak Jangra" },
+    { id: 7, name: "Pankaj Jangra" },
   ];
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const User = () => {
       {user ? (
         <>
           <h1>User Details</h1>
-          <p>Username: {user.username}</p>
+          <p>Name: {user.name}</p>
           <p>ID: {user.id}</p>
         </>
       ) : (
