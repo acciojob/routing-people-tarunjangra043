@@ -38,7 +38,7 @@ const User = () => {
         <>
           <h1>User Details</h1>
           <p>Name: {user.name}</p>
-          <p>ID: {user.id}</p>
+          {/* <p>ID: {user.id}</p> */}
         </>
       ) : (
         <h1>User not found</h1>
