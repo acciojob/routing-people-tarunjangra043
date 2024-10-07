@@ -1,12 +1,23 @@
 import React from "react";
 import "./../styles/App.css";
-import UserList from "./UserList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Loading from "./Loading";
+import { Suspense, lazy } from "react";
+
+import User from "./User";
 
 const App = () => {
   return (
-    <div>
-      <UserList />
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Navbar />} />
+
+          <Route path="/users/:id" element={<User />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 };
 

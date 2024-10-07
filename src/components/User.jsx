@@ -1,48 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const User = () => {
   const { id } = useParams();
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const data = [
-    { id: 1, name: "Tarun Jangra" },
-    { id: 2, name: "Sumit Jangra" },
-    { id: 3, name: "Leanne Graham" },
-    { id: 4, name: "Ritik Jangra" },
-    { id: 5, name: "Jonika Jangra" },
-    { id: 6, name: "Deepak Jangra" },
-    { id: 7, name: "Pankaj Jangra" },
-  ];
-
+  const [user, setUser] = useState();
   useEffect(() => {
-    const fetchUser = () => {
-      setLoading(true);
-      setTimeout(() => {
-        const foundUser = data.find((data) => data.id === Number(id));
-        setUser(foundUser);
-        setLoading(false);
-      }, 1000);
+    const getData = async () => {
+      try {
+        const responce = await fetch(
+          `https://jsonplaceholder.typicode.com/users`
+        );
+        const data = await responce.json();
+        setUser(data.find((user) => user.id == id));
+        console.log(user);
+      } catch (error) {
+        console.log(error);
+      }
     };
-
-    fetchUser();
+    getData();
   }, [id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
       {user ? (
-        <>
+        <div>
           <h1>User Details</h1>
-          <p>Name: {user.name}</p>
-          {/* <p>ID: {user.id}</p> */}
-        </>
+          <p>
+            <strong>Name:</strong> {user.name}
+          </p>
+          <p>
+            <strong>Username:</strong> {user.username}
+          </p>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Phone:</strong> {user.phone}
+          </p>
+          <p>
+            <strong>Website:</strong> {user.website}
+          </p>
+        </div>
       ) : (
-        <h1>User not found</h1>
+        <div>Loading...</div>
       )}
     </div>
   );
